@@ -1,0 +1,23 @@
+<section>
+	<div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form id="login" [formGroup]="credentials" (ngSubmit)="loggin()">
+					<label for="chk" aria-hidden="true">Login</label>
+					<input id="email" formControlName="email" type="email" placeholder="Email" required="">
+					<input id="password" formControlName="password" type="password" placeholder="Password" required="">
+					<button type="submit" form="login">Login</button>
+				</form>
+			</div>
+	</div>
+</section>

@@ -1,0 +1,56 @@
+https://www.npmjs.com/package/json-server --> tutorial and info on http commands
+https://www.postman.com/ --> to run http commands
+
+1. Install Json
+===============
+
+npm install -g json-server
+
+
+2.create db.json file with info
+===============================
+
+3.run server
+============
+
+json-server --watch db.json
+
+4.Go to localhost
+=================
+
+http://localhost:3000/dataName
+
+---------------------------------------------------------------------
+
+5.to add authentication we will need to install json-server-auth to our existing database
+=========================================================================================
+
+https://www.npmjs.com/package/json-server-auth
+
+npm install -D json-server-auth
+
+6.add users collection to your database
+========================================
+
+"users" : []
+
+7.create routes.json files --> this is what will protect your website
+=====================================================================
+
+--> append url to codes -- 600,660,etc -- to create authorization
+
+{
+	"/users*" : "/660/users*"
+}
+
+
+8.run server with following command
+===================================
+
+json-server db.json -m ./node_modules/json-server-auth -r routes.json
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+<div class="container">
+  <h1 style="text-align: center; padding-top:120px; padding-bottom: 20px;">List Of Employees</h1>
+
+  <div style="text-align: center;padding-top: 20px; padding-bottom: 20px;">
+    <form style="display: inline-block;" id="newEmp" [formGroup]="employeeInfo" (ngSubmit)="add()">
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="FirstName" formControlName="FirstName" type="text" placeholder="" required/>
+        <label for="FirstName">FirstName</label>
+      </div>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="LastName" formControlName="LastName" type="text" placeholder="" required/>
+        <label for="LastName">LastName</label>
+      </div>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="Age" formControlName="Age" type="number" placeholder=0 required/>
+        <label for="Age">Age</label>
+      </div>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="Gender" formControlName="Gender" type="text" placeholder="" required/>
+        <label for="Gender">Gender</label>
+      </div>
+      <br>
+      <div style="display: inline-block;">
+        <button type="submit" class="btn btn-success float-start" form="newEmp">Add New Employee</button>
+      </div>
+    </form>
+  </div>
+
+  <div style="text-align: center; padding-top: 50px;padding-bottom: 50px;">
+  <!--checks if dataService.employee exists and that employee size if greater than 0-->
+    <table *ngIf=" dataService.employees && dataService.employees.List; else elseCondition" style="display:inline-block; width:auto; height:200px; overflow: auto;" class="flex table">
+      <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Position</th>
+        <th>Salary</th>
+      </tr>
+      <tbody>
+        <tr *ngFor="let record of dataService.employees.List; let i = index;" [ngStyle]="{ 'background-color' : i%2==0 ? 'lavender' : 'sage' }">
+          <td appHighlight>{{record.id}}</td>
+          <td appHighlight>{{record.firstName | uppercase}}</td>
+          <td appHighlight>{{record.lastName | uppercase}}</td>
+          <td appHighlight>{{record.age}}</td>
+          <td appHighlight>{{record.gender}}</td>
+          <td appHighlight *ngIf="record.age > 40; else elseStatement">Sr.Employee</td>
+          <td appHighlight *ngIf="record.age > 40;" [innerHTML]="record.age*10 + 50000 | currency: 'USD'"></td>
+          <ng-template #elseStatement>
+            <td appHighlight>Jr.Employee</td>
+            <td appHighlight [innerHTML]="record.age*5 + 50000 | currency: 'USD'"></td>
+          </ng-template>
+          <td style="text-align: center;">
+            <div style="display: inline-block; padding-right: 10px;">
+              <button class="btn btn-primary" (click)="view(record.id)">View</button>
+            </div>
+            <div style="display: inline-block; padding-right: 10px;">
+              <button class="btn btn-danger" (click)="remove(record.id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #elseCondition>
+      <h2>No results found...</h2>
+    </ng-template>
+  </div>
+
+  <div style="text-align: center; padding-top: 10px; padding-bottom: 10px;">
+
+    <div *ngIf="searchedEmployeeId.value == '' else edit">
+      <form #emp="ngForm" (ngSubmit)="searchForData(emp)">
+        <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+          <input class="form-control" name="Id" placeholder="" required ngModel #Id="ngModel"/>
+          <label for="Id">search by Id</label>
+        </div>
+        <div>
+          <button class="btn btn-secondary" type="submit">search</button>
+        </div>
+      </form>
+    </div>
+
+    <ng-template #edit>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <h3>Id: {{searchedEmployeeId.value}}</h3>
+      </div>
+      <br>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="FirstName" [(ngModel)]="searchedEmployee.value.FirstName" placeholder="" required/>
+        <label for="FirstName">FirstName</label>
+      </div>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="LastName" [(ngModel)]="searchedEmployee.value.LastName" placeholder="" required/>
+        <label for="LastName">LastName</label>
+      </div>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="Age" [(ngModel)]="searchedEmployee.value.Age" placeholder=0 required/>
+        <label for="Age">Age</label>
+      </div>
+      <div style="display: inline-block; padding-right: 10px;" class="form-floating mb-3">
+        <input class="form-control" id="LastName" [(ngModel)]="searchedEmployee.value.Gender" placeholder="" required/>
+        <label for="LastName">Gender</label>
+      </div>
+      <div style="padding-bottom: 10px;">
+        <button class="btn btn-secondary" type="submit" (click)="updateEmployee()">Save Changes</button>
+      </div>
+      <button class="btn btn-secondary" type="submit" (click)="resetSearch()">Done</button>
+    </ng-template>
+
+  </div>
+</div>

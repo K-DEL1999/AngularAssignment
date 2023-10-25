@@ -1,0 +1,33 @@
+<div>
+  <nav [ngClass]="{'nav-bg-dark':selected == 0, 'nav-bg-light':selected == 1}">
+    <div style="padding-left: 30px; font-size: 30px; text-align: center;">WebSite_Name</div>
+    <div>
+      <ul class="nav justify-content-center nav-tabs">
+        <li class="nav-link nav-item" [ngClass]="{'active':this.router.url === '/home'}" *ngIf="authService.isLoggedIn()">
+          <a class="button" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-link nav-item" [ngClass]="{'active':this.router.url === '/body'}" *ngIf="authService.isLoggedIn()">
+          <a class="button" routerLink="/body" routerLinkActive="active">Employees</a>
+        </li>
+        <li class="nav-link nav-item" [ngClass]="{'active':this.router.url === '/login'}" *nhIf="!authService.isLoggedIn()">
+          <a class="button" routerLink="/login" routerLinkActive="active">login</a>
+        </li>
+        <li class="nav-link nav-item">
+          <button class="button" *ngIf="authService.isLoggedIn()" (click)="authService.logout()">logout</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div>
+  <footer [ngClass]="{'nav-bg-dark':selected == 0, 'nav-bg-light':selected == 1}">
+    <h5 style="padding: 5px;">author: K_DEL</h5>
+    <div style="padding: 5px;">
+      <select class="ms-auto" [(ngModel)]="selected">
+        <option value=0>dark</option>
+        <option value=1>light</option>
+      </select>
+    </div>
+  </footer>
+</div>

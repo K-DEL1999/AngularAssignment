@@ -1,0 +1,41 @@
+nav {
+  position:absolute;
+  width: 100%;
+}
+
+li {
+  display: inline-block;
+  text-align: center;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+.nav-bg-dark {
+  background-color: #4C3B4D;
+  color: #E6FAFB;
+  text-align: center;
+}
+
+.nav-bg-light {
+  background-color: #BDD9BF;
+  text-align: center;
+}
+
+.button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}

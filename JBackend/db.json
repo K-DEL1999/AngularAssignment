@@ -1,0 +1,67 @@
+{
+  "employees": [
+    {
+      "id": 2,
+      "firstName": "Robert",
+      "lastName": "ChingChonZhang",
+      "age": 25,
+      "gender": "Male"
+    },
+    {
+      "id": 5,
+      "firstName": "Jacky",
+      "lastName": "ChingChonChen",
+      "age": 68,
+      "gender": "Male"
+    },
+    {
+      "id": 7,
+      "firstName": "Jonas",
+      "lastName": "Ching",
+      "age": 34,
+      "gender": "Male"
+    },
+    {
+      "id": 8,
+      "firstName": "Hudson",
+      "lastName": "Climber",
+      "age": 25,
+      "gender": "Male"
+    },
+    {
+      "id": 10,
+      "firstName": "Steve",
+      "lastName": "BillGordy",
+      "age": 25,
+      "gender": "Male"
+    },
+    {
+      "id": 11,
+      "firstName": "bacon",
+      "lastName": "jacky",
+      "age": 23,
+      "gender": "male"
+    },
+    {
+      "id": 12,
+      "firstName": "Celary",
+      "lastName": "season",
+      "age": 65,
+      "gender": "Fish"
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$cUEwEquylV2yvwNyYbSaH.2Dm9M71LjYONumkXe/olXlCNLIWwwJu",
+      "role": "Admin",
+      "id": 1
+    },
+    {
+      "email": "employee@gmail.com",
+      "password": "$2a$10$5TX3abvD.kszGv7OO14h4u7dP6OYfY1xxPSvxFCjzu9NcusB9uNxm",
+      "role": "employee",
+      "id": 2
+    }
+  ]
+}
